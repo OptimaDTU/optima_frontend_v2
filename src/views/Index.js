@@ -1,7 +1,5 @@
 import React , {Component} from "react";
-import axios from 'axios'
 
-import FullPost from './fullpost/Fullpost'
 // reactstrap components
 // import {
 // } from "reactstrap";
