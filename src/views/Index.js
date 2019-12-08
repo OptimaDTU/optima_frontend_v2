@@ -1,8 +1,7 @@
 import React , {Component} from "react";
 import axios from 'axios'
 
-
-import FullPost from '../views/fullpost/fullpost'
+import FullPost from './fullpost/Fullpost'
 // reactstrap components
 // import {
 // } from "reactstrap";
@@ -28,20 +27,9 @@ import SignUp from "./index-sections/SignUp.js";
 import Examples from "./index-sections/Examples.js";
 import Download from "./index-sections/Download.js";
 
-import{
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText,
-} from "reactstrap"
 
-class Index extends Component{
+class Index extends Component {
 
-  state = {
-    posts : []
-  }
 
   componentDidMount(){
 
@@ -51,49 +39,12 @@ class Index extends Component{
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
 
-    axios.get('https://optimadtu.herokuapp.com/modules/?format=json')
-    .then(res => {
-      this.setState({
-        posts : res.data
-      },() => {
-        console.log(this.state.posts)
-      })
-    })
-    .catch(err => {
-      console.log(err)
-    })
   }
 
-  fullPostHandler = (title) => {
-    this.props.history.push(`/module/${title}`)
-  }
 
   render(){
-
     return (
-      <>
-        <IndexNavbar />
-        <div className="wrapper" style={{width:"100%"}}>
-          <IndexHeader />
-          <div className="main">
-            <div className="row mt-4">
-              {this.state.posts.map(post => {
-                return(
-                  <div className="col-md-3 mx-auto col-10">
-                      <Card onClick={() => this.fullPostHandler(post.slug)}>
-                        <CardImg style={{height:"200px" ,width:"100%"}} alt="..." src={post.thumbnail}/>
-                        <CardBody>
-                          <CardText>{post.description}</CardText>
-                        </CardBody>
-                      </Card>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-          
-        </div>
-      </>
+        <IndexHeader />
     );
     
   }

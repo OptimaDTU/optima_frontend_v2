@@ -32,21 +32,20 @@ function IndexHeader() {
         <div
           className="page-header-image"
           style={{
-            backgroundImage: "url(" + require("assets/img/header.jpg") + ")"
+            backgroundImage: "url(" + require("assets/img/banner_new.jpeg") + ")"
           }}
           ref={pageHeader}
-        ></div>
+        />
         <Container>
           <div className="content-center brand">
             <img
               alt="..."
               className="n-logo"
-              src={require("assets/img/now-logo.png")}
-            ></img>
-            <h1 className="h1-seo">OPTIMA</h1>
-          
+              src={require("assets/img/optima_logo.png")}
+            />
+            <h1 className="h1-seo"> <strong> OPTIMA </strong></h1>
+              <h6 className="h6-seo">The Machine Learning Society of DTU</h6>
           </div>
-          
         </Container>
       </div>
     </>

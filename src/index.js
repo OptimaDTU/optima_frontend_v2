@@ -30,15 +30,21 @@ import NucleoIcons from "views/NucleoIcons.js";
 import LoginPage from "views/examples/LoginPage.js";
 import LandingPage from "views/examples/LandingPage.js";
 import ProfilePage from "views/examples/ProfilePage.js";
-import Team from './views/Team/team'
-import FullPost from './views/fullpost/fullpost'
+import Team from './views/team/Team'
+import FullPost from './views/fullpost/Fullpost'
+import PostLists from 'views/blogs/PostLists'
+import IndexNavbar from 'components/Navbars/IndexNavbar'
 
 ReactDOM.render(
+    <>
+        <IndexNavbar />
+        <div className="wrapper" style={{width:"100%"}}>
   <BrowserRouter>
     <Switch>
       <Switch>
         <Route exact path="/index" render={props => <Index {...props} />} />
         <Route exact path="/team" component={Team} />
+          <Route exact path="/blogs" component={PostLists} />
         <Route exact path="/module/:id" component={FullPost} />
         <Route
           path="/nucleo-icons"
@@ -57,6 +63,6 @@ ReactDOM.render(
         <Redirect from="/" to="/index" />
       </Switch>
     </Switch>
-  </BrowserRouter>,
+  </BrowserRouter> </div> </>,
   document.getElementById("root")
 );

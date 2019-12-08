@@ -1,16 +1,15 @@
 import React , { Component } from 'react'
 import axios from 'axios'
-import IndexNavbar from '../../components/Navbars/IndexNavbar'
 
 class FullPost extends Component{
 
     state = {
         postData : {}
-    }
+    };
 
     componentDidMount(){
 
-        let id = this.props.match.params.id
+        let id = this.props.match.params.id;
 
         axios.get(`https://optimadtu.herokuapp.com/modules/${id}/?format=json`)
         .then(res => {
@@ -26,10 +25,10 @@ class FullPost extends Component{
 
     render(){
 
-        let videos = null
+        let videos = null;
 
-        console.log(this.state.postData)
-        console.log(this.state.postData.videos)
+        console.log(this.state.postData);
+        console.log(this.state.postData.videos);
 
         if(this.state.postData.videos){
 
@@ -52,11 +51,10 @@ class FullPost extends Component{
             })
         }
 
-        console.log(this.state.postData)
+        console.log(this.state.postData);
         return(
             <>
-                <IndexNavbar />
-                    <div className="container" style={{marginTop:"70px"}}> 
+                    <div className="container" style={{marginTop:"100px"}}>
                         <div className="row">
                             <div className="col-12 text-center">
                                 <h1>{this.state.postData.title}</h1>
