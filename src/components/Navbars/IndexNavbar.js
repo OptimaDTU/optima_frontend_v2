@@ -68,9 +68,12 @@ function IndexNavbar() {
               aria-expanded={collapseOpen}
               type="button"
             >
-              <span className="navbar-toggler-bar top-bar" style={{position:"absolute",top:"0%",minHeight:"2px",minWidth:"25px",background:"white"}}/>
-              <span className="navbar-toggler-bar middle-bar" style={{position:"absolute",top:"5%",height:"2px",width:"25px",background:"white"}}/>
-              <span className="navbar-toggler-bar bottom-bar" style={{position:"absolute",top:"10px",height:"2px",width:"25px",background:"white"}}/>
+              <span className="navbar-toggler-bar top-bar"
+                    style={{position:"absolute",top:"35%",minHeight:"2px",minWidth:"25px",background:"white"}}/>
+              <span className="navbar-toggler-bar middle-bar"
+                    style={{position:"absolute",top:"65%",height:"2px",width:"25px",background:"white"}}/>
+              <span className="navbar-toggler-bar bottom-bar"
+                    style={{position:"absolute",top:"95%",height:"2px",width:"25px",background:"white"}}/>
             </button>
           </div>
           <Collapse

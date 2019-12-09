@@ -42,8 +42,8 @@ class PostLists extends Component{
             <div className="container" style={{marginTop:"100px"}}>
                 <div className="row mt-4" style={{
             width: '100%',
-            paddingRight: '15px',
-            paddingLeft : '15px',
+            paddingRight: '20px',
+            paddingLeft : '20px',
             marginLeft: 'auto',
             marginRight: 'auto'
             }} >
@@ -53,7 +53,7 @@ class PostLists extends Component{
                     </div>
                 {this.state.posts.map( (post, key) => {
                     return(
-                            <div key = {key} className="col-sm-4 text-center">
+                            <div key = {key} className="col-sm-4 text-center m-sm-2">
                                 <Link to={`/module/${post.slug}`} style={this.linkStyle}>
                                 <Card className="h-100" >
                                     <CardImg className="h-50"  alt="..."
