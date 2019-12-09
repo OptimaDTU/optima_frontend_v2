@@ -18,17 +18,20 @@ class FullPost extends Component{
             })
         })
         .catch(err => {
-            console.log(err)
+            console.log(err) 
         })
 
+    }
+
+    getVideo = (slug,url) => {
+        this.props.history.push(`/modules/${slug}/$`)
     }
 
     render(){
 
         let videos = null;
 
-        console.log(this.state.postData);
-        console.log(this.state.postData.videos);
+
 
         if(this.state.postData.videos){
 
@@ -40,9 +43,14 @@ class FullPost extends Component{
                         <div className="col-1 d-flex justify-content-center align-items-center" style={{fontSize:"20px"}}>
                             {indx+1}.
                         </div>
-                        <div className="col-md-2 col-12 mb-4">
-                            <img src={video.thumbnail} />
-                        </div>
+                        
+                            <div className="col-md-2 col-12 mb-4" onClik={() => this.getVideo(video.slug,video.url)}>
+                                <a href={video.url} target="_black">
+                                    <img src={video.thumbnail} />
+                                </a>
+                            </div>
+                        
+                        
                         <div className="col-md-6 col-12 mb-4 align-items-center d-flex" style={{fontSize:"20px"}}>
                             {video.description}
                         </div>
@@ -51,7 +59,7 @@ class FullPost extends Component{
             })
         }
 
-        console.log(this.state.postData);
+
         return(
             <>
                     <div className="container" style={{marginTop:"100px"}}>

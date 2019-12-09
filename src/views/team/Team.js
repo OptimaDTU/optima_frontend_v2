@@ -12,7 +12,7 @@ import{
 
 class Team extends Component{
 
-
+    
     state = {
         
         teamMembers : [
@@ -21,7 +21,7 @@ class Team extends Component{
                 position : "President",
                 text:`Gaurav is a junior computer science major at Delhi Technological University. 
                 He is a curious learner, and ideas like Computer Vision and AI intrigue him.`,
-                facebookLink:'',githubLink:'',twitterLink:'',instagramLink:''},
+                mailLink:'',githubLinK:'',websiteLink:''},
             {   name:'Sharan Gopal',
                 image: require( 'assets/img/sharan.jpeg' ),
                 position : "Vice-President",
@@ -69,14 +69,11 @@ class Team extends Component{
                                 </CardBody>
                                  <CardFooter>
                                      <div className="row px-3 justify-content-center">
-                                         <a href={member.facebookLink}>
-                                             <i className="fab fa-facebook mx-3 text-info fa-2x"/>
+                                         <a href={member.mailLink}>
+                                             <i className="fa fa-envelope mx-3 text-info fa-2x"/>
                                          </a>
-                                         <a href={member.twitterLink}>
-                                             <i className="fab fa-twitter mx-3 text-info fa-2x"/>
-                                         </a>
-                                         <a href={member.instagramLink}>
-                                             <i className="fab fa-instagram mx-3 text-danger fa-2x"/>
+                                         <a href={member.websiteLink}>
+                                             <i className="fa fa-globe mx-3 text-info fa-2x"/>
                                          </a>
                                          <a href={member.githubLink}>
                                              <i className="fab fa-github mx-3 fa-2x"/>
