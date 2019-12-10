@@ -43,8 +43,8 @@ function IndexHeader() {
               className="n-logo"
               src={require("assets/img/optima_logo.png")}
             />
-            <h1 className="h1-seo"> <strong> OPTIMA </strong></h1>
-              <h6 className="h6-seo">The Machine Learning Society of DTU</h6>
+            <h1 className="h1-seo font-weight-bold"> <strong> OPTIMA </strong></h1>
+              <h6 className="h6-seo font-weight-bold">The Machine Learning Society of DTU</h6>
           </div>
         </Container>
       </div>

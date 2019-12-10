@@ -21,21 +21,36 @@ class Team extends Component{
                 position : "President",
                 text:`Gaurav is a junior computer science major at Delhi Technological University. 
                 He is a curious learner, and ideas like Computer Vision and AI intrigue him.`,
-                mailLink:'',githubLinK:'',websiteLink:''},
+                mailLink: 'gauravjain13298@gmail.com',
+                githubLinK: 'https://github.com/Gaurav1302',
+                websiteLink: 'https://scholar.google.com/citations?hl=en&user=0Jbw4QIAAAAJ'},
             {   name:'Sharan Gopal',
                 image: require( 'assets/img/sharan.jpeg' ),
                 position : "Vice-President",
                 text:`Sharan is a Computer Science undergrad at Delhi Technological University. 
                 His interests include deep learning, data structures, algorithms and mathematics. 
-                Apart from those, he spends a lot of time on anime and music..`,
-            facebookLink:'',githubLink:'',twitterLink:'',instagramLink:''},
+                Apart from those, he spends a lot of time on anime and music.`,
+                mailLink: 'sharan20051998@gmail.com',
+                githubLinK: 'https://github.com/sharan-dce',
+                websiteLink: null},
             {   name:'Suransh Chopra',
                 image: require( 'assets/img/suransh.jpeg' ),
                 position : "Tech Lead",
-                text:`Sharan is a Computer Science undergrad at Delhi Technological University. 
-                His interests include deep learning, data structures, algorithms and mathematics. 
-                Apart from those, he spends a lot of time on anime and music..`,
-                facebookLink:'',githubLink:'',twitterLink:'',instagramLink:''}
+                text:`Suransh is a Computer Science undergrad at Delhi Technological University. 
+                He is a fun loving person and a Techie. 
+                He has a decent experience in Sport Programming, Full stack web development and Deep Learning`,
+                mailLink: 'suransh2008@gmail.com',
+                githubLinK: 'https://github.com/suri97',
+                websiteLink: 'http://suranshchopra.tech/'},
+            {   name:'Shivang Chopra',
+                image: require( 'assets/img/shivang.jpeg' ),
+                position : "Tech Lead",
+                text:`Shivang is a huge tech geek with experience in the fields of Augmented Reality, Unity3D Game Development, 
+                Machine Learning, Android Development and Competitive Programming. 
+                He is currently pursuing his B.Tech in Computer Science from Delhi Technological University. `,
+                mailLink: 'shivangchopra11@gmail.com',
+                githubLinK: 'https://github.com/shivangchopra11',
+                websiteLink: null}
         ]
     };
 
@@ -69,15 +84,21 @@ class Team extends Component{
                                 </CardBody>
                                  <CardFooter>
                                      <div className="row px-3 justify-content-center">
-                                         <a href={member.mailLink}>
+                                         { member.mailLink ?
+                                         <a target="_blank"
+                                             href={ "mailto:" + member.mailLink }>
                                              <i className="fa fa-envelope mx-3 text-info fa-2x"/>
-                                         </a>
-                                         <a href={member.websiteLink}>
+                                         </a> : null }
+                                         { member.websiteLink ?
+                                         <a target="_blank"
+                                             href={ member.websiteLink }>
                                              <i className="fa fa-globe mx-3 text-info fa-2x"/>
-                                         </a>
-                                         <a href={member.githubLink}>
+                                         </a> : null }
+                                         { member.githubLinK ?
+                                         <a target="_blank" style={{color: 'inherit'}}
+                                             href={ member.githubLinK }>
                                              <i className="fab fa-github mx-3 fa-2x"/>
-                                         </a>
+                                         </a> : null }
                                      </div>
                                  </CardFooter>
                              </Card>
