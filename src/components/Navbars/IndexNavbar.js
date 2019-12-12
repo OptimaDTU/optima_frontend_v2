@@ -60,7 +60,7 @@ function IndexNavbar() {
             </NavbarBrand>
            
             <button
-              className="navbar-toggler navbar-toggler ml-auto" style={{position:"absolute",right:"0"}}
+              className="navbar-toggler navbar-toggler ml-auto" style={{position:"absolute",right:"10%"}}
               onClick={() => {
                 document.documentElement.classList.toggle("nav-open");
                 setCollapseOpen(!collapseOpen);
