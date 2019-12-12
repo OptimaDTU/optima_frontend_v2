@@ -83,8 +83,8 @@ function IndexNavbar() {
           >
               <Nav navbar>
                   <NavItem>
-                      <NavLink href="/blogs" >
-                          <p style={{fontSize: 12}} > Blogs </p>
+                      <NavLink href="/videos" >
+                          <p style={{fontSize: 12}} > Videos </p>
                       </NavLink>
                   </NavItem>
               </Nav>

@@ -40,7 +40,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" render={props => <Index {...props} />} />
         <Route exact path="/team" component={Team} />
-          <Route exact path="/blogs" component={PostLists} />
+          <Route exact path="/videos" component={PostLists} />
         <Route exact path="/module/:id" component={FullPost} />
         
        
