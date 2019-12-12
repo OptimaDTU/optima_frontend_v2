@@ -32,6 +32,8 @@ class PostLists extends Component{
                 this.setState({
                     posts : res.data,
                     loading: false
+                },() => {
+                    console.log(this.state.posts)
                 })
             })
             .catch(err => {
@@ -67,21 +69,56 @@ class PostLists extends Component{
                         <hr/>
                     </div>
                     {loader}
-                {this.state.posts.map( (post, key) => {
+                    {this.state.posts[0] ? 
+                    <div className="col-sm-4 text-center m-sm-2 mb-5">
+                               
+                                <Card className="h-100" >
+                                <iframe width="100%" height="200"
+                                    src={`https://www.youtube.com/embed/N5vscPTWKOk`}>
+                                </iframe>
+                                         <Link to={`/module/${this.state.posts[0].slug}`} style={this.linkStyle}>
+                                            <CardBody>
+                                                <CardText>{this.state.posts[0].description}</CardText>
+                                        
+                                            </CardBody>
+                                         </Link>
+                                </Card>
+                                
+                        </div> : null}
+
+                        {this.state.posts[1] ? 
+                        <div className="col-sm-4 text-center m-sm-2 mb-5">
+                               
+                               <Card className="h-100" >
+                                   <CardImg className="h-50"  alt="..."
+                                       src={this.state.posts[1].thumbnail}/>
+                                        <Link to={`/module/${this.state.posts[1].slug}`} style={this.linkStyle}>
+                                           <CardBody>
+                                               <CardText>{this.state.posts[1].description}</CardText>
+                                       
+                                           </CardBody>
+                                        </Link>
+                               </Card>
+                               
+                       </div>  : null}
+              {/*  {this.state.posts.map( (post, key) => {
                     return(
                             <div key = {key} className="col-sm-4 text-center m-sm-2 mb-5">
-                                <Link to={`/module/${post.slug}`} style={this.linkStyle}>
+                               
                                 <Card className="h-100" >
                                     <CardImg className="h-50"  alt="..."
                                         src={post.thumbnail}/>
-                                    <CardBody>
-                                        <CardText>{post.description}</CardText>
-                                    </CardBody>
+                                         <Link to={`/module/${post.slug}`} style={this.linkStyle}>
+                                            <CardBody>
+                                                <CardText>{post.description}</CardText>
+                                        
+                                            </CardBody>
+                                         </Link>
                                 </Card>
-                                </Link>
+                                
                             </div>
                 )
-            })}
+            })} */}
             </div>
         </div>
         )
