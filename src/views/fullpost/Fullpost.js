@@ -36,22 +36,31 @@ class FullPost extends Component{
         if(this.state.postData.videos){
 
            videos =  this.state.postData.videos.map((video,indx) => {
+
+            let url = video.url
+            
+            url = url.replace("watch","embed")
+            url = url.replace('?','/')
+            url = url.replace('v=','')
+
+           
+
                 return(
-                    <div className="row mt-4 mb-4" style={{
+                    <div className="row mt-4 mb-5" style={{
 
                     }}>
                         <div className="col-1 d-flex justify-content-center align-items-center" style={{fontSize:"20px"}}>
                             {indx+1}.
                         </div>
                         
-                            <div className="col-md-2 col-12 mb-4" onClik={() => this.getVideo(video.slug,video.url)}>
-                                <a href={video.url} target="_black">
-                                    <img src={video.thumbnail} />
-                                </a>
+                            <div className="col-md-6 col-12 mb-4" onClik={() => this.getVideo(video.slug,video.url)}>
+                                <iframe width="390" height="300"
+                                    src={url}>
+                                </iframe>
                             </div>
                         
                         
-                        <div className="col-md-6 col-12 mb-4 align-items-center d-flex" style={{fontSize:"20px"}}>
+                        <div className="col-md-5 col-12 mb-4 align-items-center d-flex" style={{fontSize:"20px"}}>
                             {video.description}
                         </div>
                     </div>
