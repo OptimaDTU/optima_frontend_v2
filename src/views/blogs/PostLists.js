@@ -39,6 +39,14 @@ class PostLists extends Component{
             .catch(err => {
                 console.log(err)
             })
+
+        axios.get('http://localhost:3010/blogs')
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     render() {

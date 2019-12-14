@@ -1,4 +1,5 @@
-import React from "react";
+import React , {Component} from "react";
+import { Redirect } from 'react-router-dom'
 
 // reactstrap components
 import {
@@ -17,10 +18,154 @@ import {
 } from "reactstrap";
 
 // core components
-import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-import TransparentFooter from "components/Footers/TransparentFooter.js";
 
-function LoginPage() {
+import TransparentFooter from "components/Footers/TransparentFooter.js";
+import axios from 'axios'
+
+
+class LoginPage extends Component{
+
+
+  submitForm = (e) => {
+    e.preventDefault()
+    console.log("submit")
+    let email =document.getElementById('email').value
+    let password = document.getElementById('password').value
+  
+    const dataToSubmit = {
+      email,
+      password
+    }
+  
+    console.log(dataToSubmit)
+  
+    axios({
+      method : "POST",
+      url : "http://localhost:3010/admin/login",
+      data : dataToSubmit,
+      withCredentials : true,
+    })
+    .then(res => {
+      console.log(res.data)
+      let data = res.data
+      if(data.loginSuccess){
+        this.props.history.push('/admin/dashboard')
+      }else{
+      //  console.log("hi there")
+        this.props.history.push('/')
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+  
+
+  render(){
+    return(
+      <>
+      {/*<ExamplesNavbar /> */}
+      <div className="page-header clear-filter" filter-color="blue">
+        <div
+          className="page-header-image"
+          style={{
+            backgroundImage: "url(" + require("assets/img/login.jpg") + ")"
+          }}
+        ></div>
+        <div className="content">
+          <Container>
+            <Col className="ml-auto mr-auto" md="4">
+              <Card className="card-login card-plain">
+                <Form className="form" method="POST">
+                  <CardHeader className="text-center">
+                    <div className="logo-container">
+                      <img
+                        alt="..."
+                        src={require("assets/img/now-logo.png")}
+                      ></img>
+                    </div>
+                  </CardHeader>
+                  <CardBody>
+                  <InputGroup
+                      className={
+                        "no-border input-lg"
+                      }
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="now-ui-icons users_circle-08"></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Email..."
+                        type="text"
+                        id="email"
+                      ></Input>
+                    </InputGroup>
+                    <InputGroup
+                      className={
+                        "no-border input-lg"
+                      }
+                    >
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <i className="now-ui-icons users_circle-08"></i>
+                        </InputGroupText>
+                      </InputGroupAddon>
+                      <Input
+                        placeholder="Password..."
+                        type="text"
+                        id="password"
+                      ></Input>
+                    </InputGroup>
+                  </CardBody>
+                 <CardFooter className="text-center">
+                    <Button
+                      block
+                      className="btn-round"
+                      color="info"
+                      href="#pablo"
+                      onClick={e => this.submitForm(e)}
+                      size="lg"
+                    >
+                      Get Started
+                    </Button>
+                   {/* <div className="pull-left">
+                      <h6>
+                        <a
+                          className="link"
+                          href="#pablo"
+                          onClick={e => e.preventDefault()}
+                        >
+                          Create Account
+                        </a>
+                      </h6>
+                    </div>
+                    <div className="pull-right">
+                      <h6>
+                        <a
+                          className="link"
+                          href="#pablo"
+                          onClick={e => e.preventDefault()}
+                        >
+                          Need Help?
+                        </a>
+                      </h6>
+                    </div>  */}
+                  </CardFooter> 
+                </Form>
+              </Card>
+            </Col>
+          </Container>
+        </div>
+        <TransparentFooter />
+      </div>
+    </>
+    ) 
+  }
+}
+
+/*function LoginPage() {
   const [firstFocus, setFirstFocus] = React.useState(false);
   const [lastFocus, setLastFocus] = React.useState(false);
   React.useEffect(() => {
@@ -36,7 +181,7 @@ function LoginPage() {
   });
   return (
     <>
-      <ExamplesNavbar />
+      <ExamplesNavbar /> 
       <div className="page-header clear-filter" filter-color="blue">
         <div
           className="page-header-image"
@@ -48,7 +193,7 @@ function LoginPage() {
           <Container>
             <Col className="ml-auto mr-auto" md="4">
               <Card className="card-login card-plain">
-                <Form action="" className="form" method="">
+                <Form onSubmit={submitForm} className="form" method="POST">
                   <CardHeader className="text-center">
                     <div className="logo-container">
                       <img
@@ -95,18 +240,18 @@ function LoginPage() {
                       ></Input>
                     </InputGroup>
                   </CardBody>
-                  <CardFooter className="text-center">
+                 <CardFooter className="text-center">
                     <Button
                       block
                       className="btn-round"
                       color="info"
                       href="#pablo"
-                      onClick={e => e.preventDefault()}
+                      onClick={e => submitForm(e)}
                       size="lg"
                     >
                       Get Started
                     </Button>
-                    <div className="pull-left">
+                   {/* <div className="pull-left">
                       <h6>
                         <a
                           className="link"
@@ -127,8 +272,8 @@ function LoginPage() {
                           Need Help?
                         </a>
                       </h6>
-                    </div>
-                  </CardFooter>
+                    </div>  
+                  </CardFooter> 
                 </Form>
               </Card>
             </Col>
@@ -138,6 +283,6 @@ function LoginPage() {
       </div>
     </>
   );
-}
+} */
 
 export default LoginPage;

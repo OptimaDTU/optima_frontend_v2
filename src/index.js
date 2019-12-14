@@ -30,6 +30,9 @@ import Team from './views/team/Team'
 import FullPost from './views/fullpost/Fullpost'
 import PostLists from 'views/blogs/PostLists'
 import IndexNavbar from 'components/Navbars/IndexNavbar'
+import LoginPage from './views/examples/LoginPage'
+import Dashboard from './views/admin/dashboard'
+import Auth from './components/Hoc/auth'
 
 ReactDOM.render(
     <>
@@ -39,10 +42,12 @@ ReactDOM.render(
     <Switch>
       <Switch>
         <Route exact path="/" render={props => <Index {...props} />} />
-        <Route exact path="/team" component={Team} />
+        <Route exact path="/team" component={Auth(Team,null)} />
           <Route exact path="/blogs" component={PostLists} />
         <Route exact path="/module/:id" component={FullPost} />
-        
+        <Route exact path="/admin/login" component ={Auth(LoginPage,false)} />
+        <Route exact path="/admin/dashboard" component ={Auth(Dashboard,true)} />
+        <Route exact path='/auth' component={Auth} />
        
         <Redirect to="/" />
       </Switch>
