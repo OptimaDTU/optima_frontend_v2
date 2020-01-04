@@ -1,6 +1,7 @@
 import React , { Component } from 'react'
 import './dashboard.css'
 import axios from 'axios'
+import urls from '../../urls'
 
 class Dashboard extends Component{
 
@@ -48,11 +49,11 @@ class Dashboard extends Component{
     submit1 = () => {
 
 
-        const datatObSumit =  this.state.blog
-        datatObSumit.title = document.getElementById('title').value
-        console.log(datatObSumit)
+        const datatOSubmit =  this.state.blog
+        datatOSubmit.title = document.getElementById('title').value
+        console.log(datatOSubmit)
 
-        axios.post('http://localhost:3010/blogs',datatObSumit)
+        axios.post(`${urls.BASE_URL}/videos`,datatOSubmit)
         .then(res => {
             alert("success")
         })
@@ -64,11 +65,12 @@ class Dashboard extends Component{
     submit2 = () => {
 
 
-        const datatObSumit =  this.state.fullPost
-        datatObSumit.title = document.getElementById('title2').value
-        console.log(datatObSumit)
+        const datatOSubmit =  this.state.fullPost
+        datatOSubmit.title = document.getElementById('title2').value
+        datatOSubmit.text = document.getElementById('text2').value
+        console.log(datatOSubmit)
 
-        axios.post('http://localhost:3010/module',datatObSumit)
+        axios.post(`${urls.BASE_URL}/module`,datatOSubmit)
         .then(res => {
             alert('success')
         })
@@ -140,16 +142,16 @@ class Dashboard extends Component{
                     })}
                         <div className="row">
                             <div className="col-12 mb-4">
-                                <input type="text" placeholder="Enter title" id="subtitle" className="dash-input"></input>
+                                <input type="text" placeholder="Enter sub-title" id="subtitle" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
-                                <input type="text" placeholder="Enter text" id="subtext" className="dash-input"></input>
+                                <input type="text" placeholder="Enter sub-text" id="subtext" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
-                                <input type="text" placeholder="enter url"  id="suburl" className="dash-input"></input>
+                                <input type="text" placeholder="enter sub-url"  id="suburl" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
-                                <input type="number" placeholder="Enter rank"  id="subrank" className="dash-input"></input>
+                                <input type="number" placeholder="Enter sub-rank"  id="subrank" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
                                 <button className="btn btn-outline-danger dash-input" onClick={this.addField}>Add</button>
@@ -174,6 +176,11 @@ class Dashboard extends Component{
                             <input type="text" placeholder="Enter title" id="title2" className="dash-input"></input>
                         </div>
                     </div>
+                    <div className="row">
+                        <div className="col-12 text-center mb-4">
+                            <input type="text" placeholder="Enter text" id="text2" className="dash-input"></input>
+                        </div>
+                    </div>
                     {this.state.fullPost.subPosts.map((sub,indx) => {
                      return(
                         <div className="row mt-3" key={indx}>
@@ -195,16 +202,16 @@ class Dashboard extends Component{
                     })}
                         <div className="row">
                             <div className="col-12 mb-4">
-                                <input type="text" placeholder="Enter title" id="subtitle2" className="dash-input"></input>
+                                <input type="text" placeholder="Enter sub-title" id="subtitle2" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
-                                <input type="text" placeholder="Enter text" id="subtext2" className="dash-input"></input>
+                                <input type="text" placeholder="Enter sub-text" id="subtext2" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
-                                <input type="text" placeholder="enter url"  id="suburl2" className="dash-input"></input>
+                                <input type="text" placeholder="enter sub-url"  id="suburl2" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
-                                <input type="number" placeholder="Enter rank"  id="subrank2" className="dash-input"></input>
+                                <input type="number" placeholder="Enter sub-rank"  id="subrank2" className="dash-input"></input>
                             </div>
                             <div className="col-12 mb-4">
                                 <button className="btn btn-outline-danger dash-input" onClick={this.addField2}>Add</button>

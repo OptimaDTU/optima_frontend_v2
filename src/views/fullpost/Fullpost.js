@@ -1,16 +1,26 @@
 import React , { Component } from 'react'
 import axios from 'axios'
+import urls from '../../urls'
 
 class FullPost extends Component{
 
     state = {
-        postData : {}
+        postData : {},
+        postDataFinal : [],
     };
 
     componentDidMount(){
 
         let id = this.props.match.params.id;
-
+           axios.get(`${urls.BASE_URL}/module/${id}`)
+           .then(data => {
+               console.log(data.data)
+               this.setState({
+                   postDataFinal : data.data
+               })
+           })
+           
+        // urls.BASE_URL
         axios.get(`https://optimadtu.herokuapp.com/modules/${id}/?format=json`)
         .then(res => {
             this.setState({
@@ -21,27 +31,24 @@ class FullPost extends Component{
             console.log(err) 
         })
 
-        axios.get("http://localhost:3010/blogs")
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        
+
+     
 
     }
 
-    getVideo = (slug,url) => {
-        this.props.history.push(`/modules/${slug}/$`)
-    }
+    //getVideo = (slug,url) => {
+      //  this.props.history.push(`/modules/${slug}/$`)
+    //}
 
     render(){
 
-        let videos = null;
+//        console.log(this.state.postDataFinal)
+  //      let videos = null;
 
 
 
-        if(this.state.postData.videos){
+     {/*   if(this.state.postData.videos){
 
            videos =  this.state.postData.videos.map((video,indx) => {
 
@@ -53,7 +60,7 @@ class FullPost extends Component{
 
            
 
-                return(
+               /* return(
                     <div className="row mt-4 mb-5" style={{
 
                     }}>
@@ -72,15 +79,58 @@ class FullPost extends Component{
                             {video.description}
                         </div>
                     </div>
-                )
+                ) 
             })
-        }
+        } */}
 
 
         return(
             <>
                     <div className="container" style={{marginTop:"100px"}}>
-                        <div className="row">
+                            {this.state.postDataFinal.map(post => {
+                                 return(
+                                     <>
+                                        <div className="row">
+                                             <div className="col-12 text-center">
+                                                <h1>{post.title}</h1>
+                                            </div>
+                                        </div>
+                                        <div className="row mt-4 mb-5">
+                                            <div className="col-12">
+                                                <h3>{post.text}</h3>
+                                            </div>
+                                        </div>  
+                                        
+                                            {post.subPosts.map((subPost,indx) => {
+                                                return(
+                                                <div className="row align-items-center mb-4">
+                                                        <div className="col-1" 
+                                                            style={{fontSize:"20px"}}>
+                                                                {indx+1}.
+                                                         </div>
+                        
+                                                    <div className="col-md-4 col-12 mb-4">
+                                                        <iframe width="390" height="300"
+                                                            src={subPost.url}>
+                                                        </iframe>
+                                                    </div>
+                        
+                        
+                                                    <div className="col-md-7 col-12 text-center mb-4" style={{fontSize:"20px"}}>
+                                                        {subPost.text}
+                                                     </div>
+                                                </div>
+                                                )
+                                            })}
+                                        
+                                    </>
+                                 )
+                            })}
+                            
+                        </div>
+                        
+                      
+                   {/*     <div className="row">
                             <div className="col-12 text-center">
                                 <h1>{this.state.postData.title}</h1>
                             </div>
@@ -88,8 +138,8 @@ class FullPost extends Component{
                                 <h2>{this.state.postData.description}</h2>
                             </div>
                         </div>
-                        {videos}
-                    </div>
+                        {videos} */}
+                    
             </>
         )
     }

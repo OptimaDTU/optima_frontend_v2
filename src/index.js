@@ -42,8 +42,8 @@ ReactDOM.render(
     <Switch>
       <Switch>
         <Route exact path="/" render={props => <Index {...props} />} />
-        <Route exact path="/team" component={Auth(Team,null)} />
-          <Route exact path="/blogs" component={PostLists} />
+        <Route exact path="/team" component={Team} />
+          <Route exact path="/videos" component={PostLists} />
         <Route exact path="/module/:id" component={FullPost} />
         <Route exact path="/admin/login" component ={Auth(LoginPage,false)} />
         <Route exact path="/admin/dashboard" component ={Auth(Dashboard,true)} />

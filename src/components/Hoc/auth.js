@@ -2,6 +2,7 @@ import React  , {Component} from 'react'
 import axios from 'axios'
 import { Route , Redirect } from 'react-router-dom'
 import Loader from '../Loader/loader'
+import urls from '../../urls';
 
 export default function(Comp,restricted){
     class Auth extends Component{
@@ -12,9 +13,9 @@ export default function(Comp,restricted){
         }
     
         componentWillMount(){
-            console.log("hete")
-            this.setState({loading : true})
-            axios.get("http://localhost:3010/admin/isAdmin",{withCredentials : true})
+
+            this.setState({loading : true}) 
+            axios.get(`${urls.BASE_URL}/admin/isAdmin`,{withCredentials : true})
             .then(data => {
                 
                 console.log("amdin + ", data.data.isAdmin)
@@ -25,8 +26,6 @@ export default function(Comp,restricted){
         }
     
         render(){
-
-            console.log(this.state.isUser)
            if(this.state.loading) return (<Loader />)
 
            if(restricted === null){
@@ -36,7 +35,7 @@ export default function(Comp,restricted){
          
            if(this.state.isUser){
             
-            console.log("ehah")
+           
             if(restricted === true) return <Comp {...this.props} />
 
             else return <Comp {...this.props} />

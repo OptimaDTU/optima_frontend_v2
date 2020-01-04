@@ -10,6 +10,7 @@ import{
     CardText,
 } from "reactstrap"
 import axios from "axios/index";
+import urls from '../../urls'
 
 class PostLists extends Component{
 
@@ -17,7 +18,8 @@ class PostLists extends Component{
         super(props);
         this.state = {
             posts : [],
-            loading : false
+            loading : false,
+            postsFinal : []
         };
         this.linkStyle = {
             color: "inherit",
@@ -27,6 +29,13 @@ class PostLists extends Component{
 
     componentDidMount() {
         this.setState({loading:true})
+        axios.get(`${urls.BASE_URL}/videos`)
+        .then(data => {
+            console.log(data.data)
+            this.setState({
+                postsFinal : data.data
+            })
+        }) 
         axios.get('https://optimadtu.herokuapp.com/modules/?format=json')
             .then(res => {
                 this.setState({
@@ -40,13 +49,6 @@ class PostLists extends Component{
                 console.log(err)
             })
 
-        axios.get('http://localhost:3010/blogs')
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
     }
 
     render() {
@@ -72,7 +74,44 @@ class PostLists extends Component{
             marginLeft: 'auto',
             marginRight: 'auto'
             }} >
-                    <div className="col-10">
+                    {this.state.postsFinal.map((post,indx) => {
+                        return(
+                            <div key={indx} style={{width:"100%"}}>
+                                <div className="row mt-5">
+                                    <div className="col-10">
+                                        <h1>{post.title}</h1>
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                {post.subtopics.map((subtopic,i) => {
+                                    return(
+                                        <div key={i} className="col-sm-4 text-center m-sm-2 mb-5">
+                                    {console.log(subtopic.url)}
+                                     <Card className="h-100" >
+                                        <iframe width="100%" height="200"
+                                        src={subtopic.url}>
+                                        </iframe>
+                                         <Link to={`/module/${subtopic.title}`}  style={this.linkStyle}>
+                                            <CardBody>
+                                                <CardText>{subtopic.text}</CardText>
+                                        
+                                            </CardBody>
+                                         </Link>
+                                     </Card>
+
+                                </div>
+                                    )
+                                })}
+
+                                </div>
+                                
+                                
+                                
+                            </div>
+                        )
+                    })}
+                  {/*  <div className="col-10">
                         <h1>Basics</h1>
                         <hr/>
                     </div>

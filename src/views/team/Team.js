@@ -19,7 +19,7 @@ class Team extends Component{
             {   name:'Gaurav Jain',
                 image: require( 'assets/img/gaurav.jpeg' ),
                 position : "President",
-                text:`Gaurav is a junior computer science major at Delhi Technological University. 
+                text:`Gaurav is a senior Computer Science Major at Delhi Technological University. 
                 He is a curious learner, and ideas like Computer Vision and AI intrigue him.`,
                 mailLink: 'gauravjain13298@gmail.com',
                 githubLinK: 'https://github.com/Gaurav1302',
